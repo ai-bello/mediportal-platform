@@ -26,6 +26,9 @@ class Program
                 case "3":
                     quit = true;
                     break;
+                default:
+                    Console.WriteLine("Invalid entry. Try again.");
+                    break;
             }
         } while (!quit);
         
