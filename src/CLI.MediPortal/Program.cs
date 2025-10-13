@@ -1,4 +1,5 @@
-﻿using System.Net.Quic;
+﻿using System.Collections.Concurrent;
+using System.Net.Quic;
 using System.Runtime.InteropServices;
 using Library.MediPortal;
 using Library.MediPortal.Models;
@@ -19,7 +20,7 @@ class Program
             switch (Console.ReadLine())
             {
                 case "1":
-                    ManagePatients();
+                    ManagePatients(patientList);
                     break;
                 case "2":
                     //ManagePhysicians();
@@ -52,7 +53,7 @@ class Program
         Console.WriteLine("5. Back to main menu");
     }
 
-    public static void ManagePatients()
+    public static void ManagePatients(List<Patient?> patientList)
     {
         bool goBack = false;
         do
@@ -61,6 +62,7 @@ class Program
             switch (Console.ReadLine())
             {
                 case "1":
+                    CreatePatient(patientList);
                     break;
                 case "2":
                     break;
@@ -75,17 +77,55 @@ class Program
         } while (!goBack);
     }
 
-    public static void CreatePatient()
+    public static void CreatePatient(List<Patient?> patientList)
     {
         Patient patient = new Patient();
         Console.WriteLine("Enter the new patient's name: ");
         patient.Name = Console.ReadLine();
         Console.WriteLine("Enter the patients address: ");
         patient.Address = Console.ReadLine();
-        int birthYear = int.Parse(Console.ReadLine() ?? "-1");
-        int birthMonth = int.Parse(Console.ReadLine() ?? "-1");
-        int birthDay = int.Parse(Console.ReadLine() ?? "-1");
-        
+        Console.WriteLine("Enter the patient's birthday (MM-DD-YYYY): ");
+        DateTime bd; //variable that TryParse will accept
+        while (true)
+        {
+            string? input = Console.ReadLine();
+            if (DateTime.TryParse(input, out bd))
+            {
+                patient.BirthDate = bd;
+                Console.WriteLine("Successful entry.");
+                break;
+            }
+            Console.WriteLine("Invalid entry. Try again.");
+        }
+        Console.WriteLine("Enter the patient's race: ");
+        patient.Race = Console.ReadLine();
+        Console.WriteLine("Enter the patient's gender: ");
+        patient.Gender = Console.ReadLine();
+        while (true)
+        {
+            Console.WriteLine("Enter the patient's diagnoses and enter 'x' if done: ");
+            string? input = Console.ReadLine();
+            if (input?.ToLower() != "x")
+            {
+                patient.Diagnoses.Add(input);
+            }
+            else
+            {
+                break;
+            }
+        }
+        var maxId = -1;
+        if (patientList.Any())
+        {
+            patientList.Select(p => p?.Id ?? 0).Max();
+        }
+        else
+        {
+            maxId = 0;
+        }
+        patient.Id = ++maxId;
+
+        patientList.Add(patient);
     }
     
 }
