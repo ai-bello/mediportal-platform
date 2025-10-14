@@ -120,7 +120,7 @@ class Program
         var maxId = -1;
         if (patientList.Any())
         {
-            patientList.Select(p => p?.Id ?? 0).Max();
+            maxId = patientList.Select(p => p?.Id ?? -1).Max();
         }
         else
         {
