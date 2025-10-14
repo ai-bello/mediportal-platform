@@ -1,9 +1,4 @@
-﻿using System.Collections.Concurrent;
-using System.Net.Quic;
-using System.Net.Sockets;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using Library.MediPortal;
+﻿using Library.MediPortal;
 using Library.MediPortal.Models;
 
 namespace CLI.MediPortal;
