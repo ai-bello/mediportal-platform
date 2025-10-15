@@ -1,4 +1,9 @@
-﻿using Library.MediPortal;
+﻿using System.Collections.Concurrent;
+using System.Net.Quic;
+using System.Net.Sockets;
+using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
+using Library.MediPortal;
 using Library.MediPortal.Models;
 
 namespace CLI.MediPortal;
@@ -45,8 +50,8 @@ class Program
         Console.WriteLine("\n-------Patients Menu-------");
         Console.WriteLine("1. Create new patient");
         Console.WriteLine("2. View all patients");
-        Console.WriteLine("3. Update existing patient");
-        Console.WriteLine("4. Delete existing patient");
+        Console.WriteLine("3. Update patient");
+        Console.WriteLine("4. Delete patient");
         Console.WriteLine("5. Back to main menu");
     }
 
@@ -132,6 +137,14 @@ class Program
         {
             Console.WriteLine(p);
         }
+    }
+
+    public static void UpdatePatient(List<Patient?> patientList)
+    {
+        Console.WriteLine("Select the ID of the patient you would like to update: ");
+        int selectedID = int.Parse(Console.ReadLine() ?? "0");
+        
+
     }
     
 }
