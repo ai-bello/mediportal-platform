@@ -142,8 +142,9 @@ class Program
     public static void UpdatePatient(List<Patient?> patientList)
     {
         Console.WriteLine("Select the ID of the patient you would like to update: ");
+        patientList.ForEach(patient => patient?.PrintIdName());
         int selectedID = int.Parse(Console.ReadLine() ?? "0");
-        
+
 
     }
     
