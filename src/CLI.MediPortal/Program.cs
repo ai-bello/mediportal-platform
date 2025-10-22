@@ -70,6 +70,7 @@ class Program
                     ViewPatients(patientList);
                     break;
                 case "3":
+                    UpdatePatient(patientList);
                     break;
                 case "4":
                     break;
@@ -142,7 +143,7 @@ class Program
     public static void UpdatePatient(List<Patient?> patientList)
     {
         Console.WriteLine("Select the ID of the patient you would like to update: ");
-        patientList.ForEach(patient => patient?.PrintIdName());
+        patientList.ForEach(patient => Console.WriteLine(patient?.PrintIdName()));
         int selectedID = int.Parse(Console.ReadLine() ?? "0");
 
 
