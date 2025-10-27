@@ -50,8 +50,8 @@ class Program
         Console.WriteLine("\n-------Patients Menu-------");
         Console.WriteLine("1. Create new patient");
         Console.WriteLine("2. View all patients");
-        Console.WriteLine("3. Update existing patient");
-        Console.WriteLine("4. Delete existing patient");
+        Console.WriteLine("3. Update patient");
+        Console.WriteLine("4. Delete patient");
         Console.WriteLine("5. Back to main menu");
     }
 
@@ -70,8 +70,10 @@ class Program
                     ViewPatients(patientList);
                     break;
                 case "3":
+                    UpdatePatient(patientList);
                     break;
                 case "4":
+                    DeletePatient(patientList);
                     break;
                 case "5":
                     goBack = true;
@@ -137,6 +139,26 @@ class Program
         {
             Console.WriteLine(p);
         }
+    }
+
+    public static void UpdatePatient(List<Patient?> patientList)
+    {
+        Console.WriteLine("Select the ID of the patient you would like to update: ");
+        //patientList.ForEach(patient => Console.WriteLine(patient?.PrintIdName()));
+        //int selectedID = int.Parse(Console.ReadLine() ?? "0");
+        //patientList.Select()
+
+
+    }
+
+    public static void DeletePatient(List<Patient?> patientList)
+    {
+        //Need to print out all patients   
+        Console.WriteLine("Patient to delete (Id): ");
+        string? selection = Console.ReadLine();
+        int IdSelected = int.Parse(selection ?? "0");
+        Patient? patientToDelete = patientList.Where(p => p != null).FirstOrDefault(p => p?.Id == IdSelected);
+        patientList.Remove(patientToDelete);
     }
     
 }
