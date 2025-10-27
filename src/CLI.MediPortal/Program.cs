@@ -73,6 +73,7 @@ class Program
                     UpdatePatient(patientList);
                     break;
                 case "4":
+                    DeletePatient(patientList);
                     break;
                 case "5":
                     goBack = true;
@@ -143,10 +144,21 @@ class Program
     public static void UpdatePatient(List<Patient?> patientList)
     {
         Console.WriteLine("Select the ID of the patient you would like to update: ");
-        patientList.ForEach(patient => Console.WriteLine(patient?.PrintIdName()));
-        int selectedID = int.Parse(Console.ReadLine() ?? "0");
+        //patientList.ForEach(patient => Console.WriteLine(patient?.PrintIdName()));
+        //int selectedID = int.Parse(Console.ReadLine() ?? "0");
+        //patientList.Select()
 
 
+    }
+
+    public static void DeletePatient(List<Patient?> patientList)
+    {
+        //Need to print out all patients   
+        Console.WriteLine("Patient to delete (Id): ");
+        string? selection = Console.ReadLine();
+        int IdSelected = int.Parse(selection ?? "0");
+        Patient? patientToDelete = patientList.Where(p => p != null).FirstOrDefault(p => p?.Id == IdSelected);
+        patientList.Remove(patientToDelete);
     }
     
 }
