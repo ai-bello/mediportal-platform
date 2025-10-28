@@ -41,8 +41,10 @@ class Program
             switch (Console.ReadLine())
             {
                 case "1":
+                    CreatePhysician();
                     break;
                 case "2":
+                    ViewPhysicians();
                     break;
                 case "3":
                     goBack = true;
@@ -60,6 +62,16 @@ class Program
         Console.WriteLine("1. Create new physician");
         Console.WriteLine("2. View all physicians");
         Console.WriteLine("3. Back to main menu");
+    }
+
+    public static void CreatePhysician()
+    {
+        ;
+    }
+
+    public static void ViewPhysicians()
+    {
+        ;
     }
     public static void MainMenu()
     {
