@@ -24,4 +24,11 @@ public class Patient
         }
         return data1 + data2 + diagnosesList;
     }
+
+    public string PrintIdName()
+    {
+        return $"[{Id}]. {Name}\n";
+    }
+
+
 }

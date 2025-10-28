@@ -1,9 +1,4 @@
-﻿using System.Collections.Concurrent;
-using System.Net.Quic;
-using System.Net.Sockets;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using Library.MediPortal;
+﻿using Library.MediPortal;
 using Library.MediPortal.Models;
 
 namespace CLI.MediPortal;
@@ -144,11 +139,90 @@ class Program
     public static void UpdatePatient(List<Patient?> patientList)
     {
         Console.WriteLine("Select the ID of the patient you would like to update: ");
-        //patientList.ForEach(patient => Console.WriteLine(patient?.PrintIdName()));
-        //int selectedID = int.Parse(Console.ReadLine() ?? "0");
-        //patientList.Select()
+        patientList.ForEach(Console.WriteLine);
+        Console.WriteLine("Patient to update (Id): ");
+        string? selection = Console.ReadLine();
+        if (int.TryParse(selection, out int IdSelected))
+        {
+            Patient? patientToUpdate = patientList.Where(p => p != null).FirstOrDefault(p => p?.Id == IdSelected);
+            bool goBack = false;
+            do
+            {
+                Console.WriteLine(patientToUpdate);
+                UpdatePatientMenu();
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        Console.WriteLine("Enter the new patient's name: ");
+                        if (patientToUpdate != null)
+                        {
+                            patientToUpdate.Name = Console.ReadLine();
+                        }
+                       
+                        break;
+                    case "2":
+                        Console.WriteLine("Enter the patients address: ");
+                        if (patientToUpdate != null)
+                        {
+                            patientToUpdate.Address = Console.ReadLine();
+                        }
+                        break;
+                    case "3":
+                        Console.WriteLine("Enter the patient's birthday (MM-DD-YYYY): ");
+                        DateTime bd; //variable that TryParse will accept
+                        string? input = Console.ReadLine();
+                        if (DateTime.TryParse(input, out bd) && patientToUpdate != null)
+                        {
+                            patientToUpdate.BirthDate = bd;
+                            Console.WriteLine("Successful entry.");
+                            break;
+                        }
+                        Console.WriteLine("Invalid entry. Try again.");
+                        break;
+                    case "4":
+                        Console.WriteLine("Enter the patient's race: ");
+                        if (patientToUpdate != null)
+                        {
+                            patientToUpdate.Race = Console.ReadLine();
+                        }  
+                        break;
+                    case "5":
+                        Console.WriteLine("Enter the patient's gender: ");
+                        if (patientToUpdate != null)
+                        {
+                            patientToUpdate.Gender = Console.ReadLine();
+                        }
+                        break;
+                    case "6":
+                        string? newDiagnoses = Console.ReadLine();
+                        if (newDiagnoses != null && patientToUpdate!=null)
+                        {
+                            patientToUpdate.Diagnoses.Add(newDiagnoses);
+                        }
+                        break;
+                    case "7":
+                        goBack = true;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid entry.");
+                        goBack = true;
+                        break;
+                }
+            } while (!goBack);
+        }
 
+    }
 
+    public static void UpdatePatientMenu()
+    {
+        Console.WriteLine("What would you like to update? ");
+        Console.WriteLine("1. Name");
+        Console.WriteLine("2. Address");
+        Console.WriteLine("3. Birthdate");
+        Console.WriteLine("4. Race");
+        Console.WriteLine("5. Gender");
+        Console.WriteLine("6. Add Diagnoses"); 
+        Console.WriteLine("7. Done"); 
     }
 
     public static void DeletePatient(List<Patient?> patientList)
