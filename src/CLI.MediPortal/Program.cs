@@ -20,7 +20,7 @@ class Program
                     ManagePatients(patientList);
                     break;
                 case "2":
-                    //ManagePhysicians();
+                    ManagePhysicians();
                     break;
                 case "3":
                     quit = true;
@@ -32,6 +32,35 @@ class Program
         } while (!quit);
     }
 
+    private static void ManagePhysicians()
+    {
+        bool goBack = false;
+        do
+        {
+            PrintPhysicianMenu();
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    break;
+                case "2":
+                    break;
+                case "3":
+                    goBack = true;
+                    break;
+                default:
+                    goBack = true;
+                    break;
+            }
+        } while (!goBack);
+    }
+
+    public static void PrintPhysicianMenu()
+    {
+        Console.WriteLine("\n------Physicians Menu------");
+        Console.WriteLine("1. Create new physician");
+        Console.WriteLine("2. View all physicians");
+        Console.WriteLine("3. Back to main menu");
+    }
     public static void MainMenu()
     {
         Console.WriteLine("\n-------Menu-------");
