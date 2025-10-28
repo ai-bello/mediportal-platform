@@ -227,7 +227,7 @@ class Program
 
     public static void DeletePatient(List<Patient?> patientList)
     {
-        //Need to print out all patients   
+        patientList.ForEach(patient => Console.WriteLine(patient?.PrintIdName())); 
         Console.WriteLine("Patient to delete (Id): ");
         string? selection = Console.ReadLine();
         int IdSelected = int.Parse(selection ?? "0");
