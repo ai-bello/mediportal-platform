@@ -10,4 +10,9 @@ public class Physician
     public string? Specializations { get; set; }
     public int Id { get; set; }
 
+    public override string ToString()
+    {
+        return $"[{Id}]. {Name}\n";
+    }
+
 }
