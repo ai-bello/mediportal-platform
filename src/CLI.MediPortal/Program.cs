@@ -44,7 +44,7 @@ class Program
                     CreatePhysician(physicianList);
                     break;
                 case "2":
-                    ViewPhysicians();
+                    ViewPhysicians(physicianList);
                     break;
                 case "3":
                     goBack = true;
@@ -100,9 +100,11 @@ class Program
         physicianList.Add(physician);
     }
 
-    public static void ViewPhysicians()
+    public static void ViewPhysicians(List<Physician?> physicianList)
     {
-        ;
+        foreach(Physician? p in physicianList) {
+            Console.Write(p);
+        }
     }
     public static void MainMenu()
     {
@@ -299,7 +301,7 @@ class Program
 
     public static void DeletePatient(List<Patient?> patientList)
     {
-        patientList.ForEach(patient => Console.WriteLine(patient?.PrintIdName())); 
+        patientList.ForEach(patient => Console.Write(patient?.PrintIdName())); 
         Console.WriteLine("Patient to delete (Id): ");
         string? selection = Console.ReadLine();
         int IdSelected = int.Parse(selection ?? "0");
