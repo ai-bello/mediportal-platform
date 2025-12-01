@@ -66,7 +66,26 @@ class Program
 
     public static void CreatePhysician()
     {
-        ;
+        Physician physician = new Physician();
+        Console.WriteLine("Enter the name of the new physician's name: ");
+        physician.Name = Console.ReadLine();
+        Console.WriteLine("Enter the physician's license number: ");
+        physician.LicenseNumber = Console.ReadLine();
+        Console.WriteLine("Enter the physician's graduation date: ");
+        DateTime gd;
+        while (true)
+        {
+            string? input = Console.ReadLine();
+            if (DateTime.TryParse(input, out gd))
+            {
+                physician.GraduationDate = gd;
+                Console.WriteLine("Successful entry.");
+                break;
+            }
+            Console.WriteLine("Invalid entry. Try again.");
+        }
+        Console.WriteLine("Enter the physician's specialization: ");
+        physician.Specializations = Console.ReadLine();
     }
 
     public static void ViewPhysicians()
