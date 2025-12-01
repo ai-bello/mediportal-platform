@@ -20,7 +20,7 @@ class Program
                     ManagePatients(patientList);
                     break;
                 case "2":
-                    ManagePhysicians();
+                    ManagePhysicians(physicianList);
                     break;
                 case "3":
                     quit = true;
@@ -32,7 +32,7 @@ class Program
         } while (!quit);
     }
 
-    private static void ManagePhysicians()
+    private static void ManagePhysicians(List<Physician?> physicianList)
     {
         bool goBack = false;
         do
@@ -41,7 +41,7 @@ class Program
             switch (Console.ReadLine())
             {
                 case "1":
-                    CreatePhysician();
+                    CreatePhysician(physicianList);
                     break;
                 case "2":
                     ViewPhysicians();
@@ -64,7 +64,7 @@ class Program
         Console.WriteLine("3. Back to main menu");
     }
 
-    public static void CreatePhysician()
+    public static void CreatePhysician(List<Physician?> physicianList)
     {
         Physician physician = new Physician();
         Console.WriteLine("Enter the name of the new physician's name: ");
@@ -86,6 +86,18 @@ class Program
         }
         Console.WriteLine("Enter the physician's specialization: ");
         physician.Specializations = Console.ReadLine();
+        int maxId = -1;
+        if (physicianList.Any())
+        {
+            maxId = physicianList.Select(p => p?.Id ?? -1).Max();
+        }
+        else
+        {
+            maxId = 0;
+        }
+        physician.Id = ++maxId;
+
+        physicianList.Add(physician);
     }
 
     public static void ViewPhysicians()

@@ -8,5 +8,6 @@ public class Physician
     public string? LicenseNumber { get; set; }
     public DateTime? GraduationDate { get; set; }
     public string? Specializations { get; set; }
+    public int Id { get; set; }
 
 }
