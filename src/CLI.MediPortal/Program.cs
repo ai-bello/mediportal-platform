@@ -23,6 +23,9 @@ class Program
                     ManagePhysicians(physicianList);
                     break;
                 case "3":
+                    MakeAppointment(physicianList);
+                    break;
+                case "4":
                     quit = true;
                     break;
                 default:
@@ -54,6 +57,49 @@ class Program
                     break;
             }
         } while (!goBack);
+    }
+
+    public static void MakeAppointment(List<Physician?> physicianList)
+    {
+        physicianList.ForEach(physician => Console.Write(physician));
+        Console.WriteLine("Physician to make appointment with (Id): ");
+        string? selection = Console.ReadLine();
+        int IdSelected = int.Parse(selection ?? "0");
+        Physician? physician = physicianList.Where(p => p != null).FirstOrDefault(p => p?.Id == IdSelected);
+        if (physician == null)
+        {
+            Console.WriteLine("No physician with that Id.");
+            return;
+        }
+        Console.WriteLine("1. Monday\n2. Tuesday\n3. Wednesday\n4. Thursday\n5. Friday");
+        Console.WriteLine("Select the appointment day (1-5): ");
+        string? dayInput = Console.ReadLine();
+        int weekDay = int.Parse(dayInput ?? "0");
+        if (weekDay > 5 || weekDay < 1)
+        {
+            Console.WriteLine("Invalid selection.");
+            return;
+        }
+        Console.WriteLine("1. 8am\n2. 9am\n3. 10am\n4. 11am\n5. 12pm\n6. 1pm\n7. 2pm\n8. 3pm\n9. 4pm");
+        Console.WriteLine("Select the appointment hour (1-9): ");
+        string? hourInput = Console.ReadLine();
+        int hour = int.Parse(hourInput ?? "0");
+        if (hour < 1 || hour > 9)
+        {
+            Console.WriteLine("Invalid selection.");
+            return;
+        }
+        if (physician?.Appointment[weekDay - 1, hour - 1] == 1)
+        {
+            Console.WriteLine("This slot is already taken.");
+        }
+        else
+        {
+            if (physician != null)
+            {
+                physician.Appointment[weekDay - 1, hour - 1] = 1;
+            }
+        }
     }
 
     public static void PrintPhysicianMenu()
@@ -111,7 +157,8 @@ class Program
         Console.WriteLine("\n-------Menu-------");
         Console.WriteLine("1. Manage Patients");
         Console.WriteLine("2. Manage Physicians");
-        Console.WriteLine("3. Quit");
+        Console.WriteLine("3. Make Appointment w/ Physician");
+        Console.WriteLine("4. Quit");
     }
 
     public static void PrintPatientMenu()
