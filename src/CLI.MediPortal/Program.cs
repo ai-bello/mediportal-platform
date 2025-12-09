@@ -60,7 +60,9 @@ class Program
     }
 
     public static void MakeAppointment(List<Physician?> physicianList) {
-        ;
+        foreach(Physician? p in physicianList) {
+            Console.Write(p);
+        }
     }
 
     public static void PrintPhysicianMenu()
