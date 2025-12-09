@@ -9,6 +9,7 @@ public class Physician
     public DateTime? GraduationDate { get; set; }
     public string? Specializations { get; set; }
     public int Id { get; set; }
+    public int[,] Appointment { get; set; } = new int[5, 9];
 
     public override string ToString()
     {
