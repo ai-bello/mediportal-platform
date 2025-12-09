@@ -23,6 +23,9 @@ class Program
                     ManagePhysicians(physicianList);
                     break;
                 case "3":
+                    MakeAppointment(physicianList);
+                    break;
+                case "4":
                     quit = true;
                     break;
                 default:
@@ -54,6 +57,10 @@ class Program
                     break;
             }
         } while (!goBack);
+    }
+
+    public static void MakeAppointment(List<Physician?> physicianList) {
+        ;
     }
 
     public static void PrintPhysicianMenu()
@@ -111,7 +118,8 @@ class Program
         Console.WriteLine("\n-------Menu-------");
         Console.WriteLine("1. Manage Patients");
         Console.WriteLine("2. Manage Physicians");
-        Console.WriteLine("3. Quit");
+        Console.WriteLine("3. Make Appointment w/ Physician");
+        Console.WriteLine("4. Quit");
     }
 
     public static void PrintPatientMenu()
