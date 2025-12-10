@@ -1,5 +1,6 @@
 ﻿using Library.MediPortal;
 using Library.MediPortal.Models;
+using Library.MediPortal.Services;
 
 namespace CLI.MediPortal;
 
@@ -8,7 +9,7 @@ class Program
     static void Main(string[] args)
     {
         Console.WriteLine("\nWelcome to MediPortal!");
-        List<Patient?> patientList = new List<Patient?>();
+        List<Patient?> patientList = PatientServiceProxy.Current.Patients;
         List<Physician?> physicianList = new List<Physician?>();
         bool quit = false;
         do
