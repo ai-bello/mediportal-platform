@@ -2,12 +2,16 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.MediPortal.Views.PhysiciansView"
-             Title="PhysiciansView">
+             Title="PhysiciansView"
+             NavigatedTo="PhysiciansView_NavigatedTo">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <ListView
+                ItemsSource="{Binding Physicians}"
+                SelectedItem="{Binding SelectedPhysician}"
+                />
+        <Button Text="Add Physician" Clicked="AddClicked"/>
+        <Button Text="Edit Physician" Clicked="EditClicked"/>
+        <Button Text="Delete Physician" Clicked="DeleteClicked"/>
 
         <Button Text="Cancel" Clicked="CancelClicked"/>
     </VerticalStackLayout>

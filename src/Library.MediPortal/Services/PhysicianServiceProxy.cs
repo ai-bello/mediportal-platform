@@ -42,19 +42,39 @@ public class PhysicianServiceProxy
         {
             return null;
         }
-        int maxId = -1;
-        if (physicianList.Any())
+        if (physician.Id <= 0)
         {
-            maxId = physicianList.Select(p => p?.Id ?? -1).Max();
+            int maxId = -1;
+            if (physicianList.Any())
+            {
+                maxId = physicianList.Select(p => p?.Id ?? -1).Max();
+            }
+            else
+            {
+                maxId = 0;
+            }
+            physician.Id = ++maxId;
+
+            physicianList.Add(physician);
         }
         else
         {
-            maxId = 0;
+            var physicianToEdit = Physicians.FirstOrDefault(p => (p?.Id ?? 0) == physician.Id);
+            if (physicianToEdit != null)
+            {
+                var index = Physicians.IndexOf(physicianToEdit);
+                Physicians.RemoveAt(index);
+                physicianList.Insert(index, physician);
+            }
         }
-        physician.Id = ++maxId;
-
-        physicianList.Add(physician);
+        
 
         return physician;
+    }
+    public Physician? Delete(int id)
+    {
+        Physician? physicianToDelete = physicianList.Where(p => p != null).FirstOrDefault(p => p?.Id == id);
+        physicianList.Remove(physicianToDelete);
+        return physicianToDelete;
     }
 }
