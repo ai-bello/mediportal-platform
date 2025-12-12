@@ -13,6 +13,14 @@ public class Patient
 
     public List<string?> Diagnoses { get; set; } = new List<string?>();
 
+    public string Display
+    {
+        get
+        {
+            return ToString();
+        }
+    }
+
     public override string ToString()
     {
         string data1 = $"[{Id}]. {Name} | {Address} | {BirthDate:MM-dd-yyyy}";
