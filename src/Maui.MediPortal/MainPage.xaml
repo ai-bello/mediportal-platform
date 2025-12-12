@@ -12,35 +12,9 @@
                 Style="{StaticResource Headline}"
                 SemanticProperties.HeadingLevel="Level1" />
 
-            <ListView
-                ItemsSource="{Binding Patients}"
-                SelectedItem="{Binding SelectedPatient}"
-                />
-                <!-- <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="5*"/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-                                <Label Text ="{Binding Name}" Grid.Column ="0"/>
-                                <Grid Grid.Column="1">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition/>
-                                        <ColumnDefinition/>
-                                    </Grid.ColumnDefinitions>
-                                    <Button Text="Edit" Grid.Column ="0" />
-                                    <Button Text="Delete" Grid.Column ="1" />
-                                </Grid>
-                                
-                            </Grid>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView> -->
-            <Button Text="Add Patient" Clicked="AddPatientClicked"/>
-
+            <Button Text="Manage Patients" Clicked="ManagePatientsClicked"/>
+            <Button Text="Manage Physicians" Clicked="ManagePhysiciansClicked"/>
+            <Button Text="Manage Appointments" Clicked="ManageAppointmentsClicked"/>
             
         </VerticalStackLayout>
     </ScrollView>

@@ -11,9 +11,19 @@ public partial class MainPage : ContentPage
 		BindingContext = new MainViewModel();
 	}
 
-	private void AddPatientClicked(object sender, EventArgs e)
+	private void ManagePatientsClicked(object sender, EventArgs e)
 	{
-		
+		Shell.Current.GoToAsync("//PatientsView");
+	}
+
+	private void ManagePhysiciansClicked(object sender, EventArgs e)
+	{
+		Shell.Current.GoToAsync("//PhysiciansView");
+	}
+
+	private void ManageAppointmentsClicked(object sender, EventArgs e)
+	{
+		Shell.Current.GoToAsync("//AppointmentsView");
 	}
 	
 }
