@@ -1,4 +1,4 @@
-﻿using System.Net.Mail;
+﻿using Library.MediPortal.Services;
 
 namespace Library.MediPortal;
 
@@ -12,6 +12,27 @@ public class Patient
     public int Id { get; set; }
 
     public List<string?> Diagnoses { get; set; } = new List<string?>();
+
+    public Patient()
+    {
+        
+    }
+
+    public Patient(int id)
+    {
+        var patientCopy = PatientServiceProxy.Current.Patients.FirstOrDefault(p => (p?.Id ?? 0) == id);
+
+        if (patientCopy != null)
+        {
+            Id = patientCopy.Id;
+            Name = patientCopy.Name;
+            Address = patientCopy.Address;
+            BirthDate = patientCopy.BirthDate;
+            Race = patientCopy.Race;
+            Gender = patientCopy.Gender;
+            Diagnoses = patientCopy.Diagnoses;
+        }
+    }
 
     public string Display
     {

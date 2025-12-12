@@ -43,19 +43,32 @@ public class PatientServiceProxy
         {
             return null;
         }
-        
-        var maxId = -1;
-        if (patientList.Any())
+        if (patient.Id <= 0)
         {
-            maxId = patientList.Select(p => p?.Id ?? -1).Max();
+            var maxId = -1;
+            if (patientList.Any())
+            {
+                maxId = patientList.Select(p => p?.Id ?? -1).Max();
+            }
+            else
+            {
+                maxId = 0;
+            }
+            patient.Id = ++maxId;
+
+            patientList.Add(patient);
         }
         else
         {
-            maxId = 0;
+            var patientToEdit = Patients.FirstOrDefault(p => (p?.Id ?? 0) == patient.Id);
+            if (patientToEdit != null)
+            {
+                var index = Patients.IndexOf(patientToEdit);
+                Patients.RemoveAt(index);
+                patientList.Insert(index, patient);
+            }
         }
-        patient.Id = ++maxId;
-
-        patientList.Add(patient);
+        
 
         return patient;
     }

@@ -13,7 +13,17 @@ public partial class PatientsView : ContentPage
 
 	private void AddPatientClicked(object sender, EventArgs e)
 	{
-		Shell.Current.GoToAsync("//AddPatientsView");
+		Shell.Current.GoToAsync("//AddPatientsView?patientId=0");
+	}
+
+	private void EditPatientClicked(object sender, EventArgs e)
+	{
+		var selectedId = (BindingContext as PatientViewModel)?.SelectedPatient?.Id ?? 0;
+		if (selectedId != 0)
+		{
+			Shell.Current.GoToAsync($"//AddPatientsView?patientId={selectedId}");
+		}
+		
 	}
 	private void CancelClicked(object sender, EventArgs e)
 	{
