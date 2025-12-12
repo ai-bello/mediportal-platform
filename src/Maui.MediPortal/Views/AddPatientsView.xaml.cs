@@ -3,7 +3,7 @@ using Library.MediPortal;
 using Library.MediPortal.Services;
 
 namespace Maui.MediPortal.Views;
-
+[QueryProperty(nameof(PatientId), "patientId")]
 public partial class AddPatientsView : ContentPage
 {
 	public AddPatientsView()
@@ -11,6 +11,7 @@ public partial class AddPatientsView : ContentPage
 		InitializeComponent();
 	}
 
+	public int PatientId { get; set; }
 	private void CancelClicked(object sender, EventArgs e)
 	{
 		Shell.Current.GoToAsync("//PatientsView");
@@ -25,6 +26,14 @@ public partial class AddPatientsView : ContentPage
 
 	private void AddPatientsView_NavigatedTo(object sender, NavigatedToEventArgs e)
 	{
-		BindingContext = new Patient();
+		if (PatientId == 0)
+		{
+			BindingContext = new Patient();
+		}
+		else
+		{
+			BindingContext = new Patient(PatientId);
+		}
+		
     }
 }

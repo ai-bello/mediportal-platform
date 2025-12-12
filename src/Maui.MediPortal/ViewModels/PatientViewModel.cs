@@ -19,7 +19,7 @@ public class PatientViewModel : INotifyPropertyChanged
 
     public void Refresh()
     {
-        NotifyPropertyChanged("Patients");
+        NotifyPropertyChanged(nameof(Patients));
     }
 
     public Patient? SelectedPatient
@@ -41,6 +41,6 @@ public class PatientViewModel : INotifyPropertyChanged
             return;
         }
         PatientServiceProxy.Current.Delete(SelectedPatient.Id);
-        NotifyPropertyChanged("Patients");
+        NotifyPropertyChanged(nameof(Patients));
     }
 }
