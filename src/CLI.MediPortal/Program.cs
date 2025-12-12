@@ -10,7 +10,7 @@ class Program
     {
         Console.WriteLine("\nWelcome to MediPortal!");
         List<Patient?> patientList = PatientServiceProxy.Current.Patients;
-        List<Physician?> physicianList = new List<Physician?>();
+        List<Physician?> physicianList = PhysicianServiceProxy.Current.Physicians;
         bool quit = false;
         do
         {
