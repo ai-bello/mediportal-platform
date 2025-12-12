@@ -14,6 +14,7 @@
                 SelectedItem="{Binding SelectedPatient}"
                 />
         <Button Text="Add Patient" Clicked="AddPatientClicked"/>
+        <Button Text="Delete Patient" Clicked="DeletePatientClicked"/>
         <Button Text="Cancel" Clicked="CancelClicked"/>
     </VerticalStackLayout>
 </ContentPage>

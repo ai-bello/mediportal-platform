@@ -31,6 +31,16 @@ public class PatientViewModel : INotifyPropertyChanged
 
     private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
     {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public void Delete()
+    {
+        if (SelectedPatient == null)
+        {
+            return;
+        }
+        PatientServiceProxy.Current.Delete(SelectedPatient.Id);
+        NotifyPropertyChanged("Patients");
     }
 }
