@@ -6,4 +6,13 @@ public partial class PatientsView : ContentPage
 	{
 		InitializeComponent();
 	}
+
+	private void AddPatientClicked(object sender, EventArgs e)
+	{
+
+	}
+	private void CancelClicked(object sender, EventArgs e)
+	{
+		Shell.Current.GoToAsync("//MainPage");
+	}
 }
