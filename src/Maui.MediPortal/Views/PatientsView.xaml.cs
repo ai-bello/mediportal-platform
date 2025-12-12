@@ -23,5 +23,10 @@ public partial class PatientsView : ContentPage
 	private void PatientsView_NavigatedTo(object sender, NavigatedToEventArgs e)
 	{
 		(BindingContext as PatientViewModel)?.Refresh();
-    }
+	}
+	
+	private void DeletePatientClicked(object sender, EventArgs e)
+	{
+		(BindingContext as PatientViewModel)?.Delete();
+	}
 }
