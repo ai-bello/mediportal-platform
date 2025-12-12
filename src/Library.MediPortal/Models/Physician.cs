@@ -41,7 +41,7 @@ public class Physician
 
     public override string ToString()
     {
-        return $"[{Id}]. {Name}\n";
+        return $"[{Id}]. {Name} | {LicenseNumber} | {GraduationDate:MM-dd-yyyy} | {Specializations}\n";
     }
 
 }
