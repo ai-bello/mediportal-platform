@@ -8,7 +8,6 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-		BindingContext = new MainViewModel();
 	}
 
 	private void ManagePatientsClicked(object sender, EventArgs e)
