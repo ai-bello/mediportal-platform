@@ -4,7 +4,9 @@
              x:Class="Maui.MediPortal.Views.AppointmentsView"
              Title="AppointmentsView"
              >
-    <VerticalStackLayout>
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
         <Button Text="Cancel" Clicked="CancelClicked"/>
     </VerticalStackLayout>
 </ContentPage>

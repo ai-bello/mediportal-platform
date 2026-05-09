@@ -4,7 +4,9 @@
              x:Class="Maui.MediPortal.Views.PhysiciansView"
              Title="PhysiciansView"
              NavigatedTo="PhysiciansView_NavigatedTo">
-    <VerticalStackLayout>
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
         <ListView
                 ItemsSource="{Binding Physicians}"
                 SelectedItem="{Binding SelectedPhysician}"

@@ -4,7 +4,9 @@
              x:Class="Maui.MediPortal.Views.AddPhysiciansView"
              Title="AddPhysiciansView"
              NavigatedTo="AddPhysiciansView_NavigatedTo">
-    <VerticalStackLayout>
+    <VerticalStackLayout
+        Padding="30,0"
+        Spacing="25">
         <Label Text="Name"/>
         <Entry Text="{Binding Name}"/>
         <Label Text="License Number"/>
