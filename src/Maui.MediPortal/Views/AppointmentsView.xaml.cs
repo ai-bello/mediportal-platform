@@ -17,7 +17,7 @@ public partial class AppointmentsView : ContentPage
 
 	private void AddClicked(object sender, EventArgs e)
 	{
-
+		Shell.Current.GoToAsync("//AddAppointmentsView?appointmentId=0");
 	}
 
     private void AppointmentsView_NavigatedTo(object sender, NavigatedToEventArgs e)
