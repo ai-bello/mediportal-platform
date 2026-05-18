@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.MediPortal.Views.AppointmentsView"
              Title="AppointmentsView"
+             NavigatedTo="AppointmentsView_NavigatedTo"
              >
     <VerticalStackLayout
         Padding="30,0"

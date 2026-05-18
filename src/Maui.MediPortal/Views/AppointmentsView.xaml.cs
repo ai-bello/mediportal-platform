@@ -19,4 +19,9 @@ public partial class AppointmentsView : ContentPage
 	{
 
 	}
+
+    private void AppointmentsView_NavigatedTo(object sender, NavigatedToEventArgs e)
+    {
+        (BindingContext as AppointmentViewModel)?.Refresh();
+    }
 }
