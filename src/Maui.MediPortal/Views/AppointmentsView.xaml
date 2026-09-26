@@ -8,7 +8,11 @@
     <VerticalStackLayout
         Padding="30,0"
         Spacing="25">
-        <Button Text="Add Appointment" Clicked="AddClicked"/>
+        <ListView 
+            ItemsSource="{Binding Appointments}"
+            SelectedItem="{Binding SelectedAppointment}"
+            />
+        <Button Text="Add Appointment" Clicked="AddAppointmentClicked"/>
         <Button Text="Cancel" Clicked="CancelClicked"/>
     </VerticalStackLayout>
 </ContentPage>

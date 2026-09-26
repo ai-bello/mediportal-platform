@@ -15,7 +15,7 @@ public partial class AppointmentsView : ContentPage
 		Shell.Current.GoToAsync("//MainPage");
 	}
 
-	private void AddClicked(object sender, EventArgs e)
+	private void AddAppointmentClicked(object sender, EventArgs e)
 	{
 		Shell.Current.GoToAsync("//AddAppointmentsView?appointmentId=0");
 	}
