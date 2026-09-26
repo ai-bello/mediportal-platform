@@ -4,9 +4,16 @@
              x:Class="Maui.MediPortal.Views.AddAppointmentsView"
              Title="AddAppointmentsView">
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Picker
+            Title="Patient Selection"
+            ItemsSource="{Binding Patients}"
+            ItemDisplayBinding="{Binding Name}"
+            SelectedItem="{Binding SelectedPatient}" />
+        <Picker
+            Title="Physician Selection"
+            ItemsSource="{Binding Physicians}"
+            ItemDisplayBinding="{Binding Name}"
+            SelectedItem="{Binding SelectedPhysician}" />
+
     </VerticalStackLayout>
 </ContentPage>
