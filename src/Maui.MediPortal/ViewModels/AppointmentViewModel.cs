@@ -21,6 +21,24 @@ namespace Maui.MediPortal.ViewModels
             }
         }
 
+        public ObservableCollection<Patient?> Patients
+        {
+            get
+            {
+                return new ObservableCollection<Patient?>(PatientServiceProxy.Current.Patients);
+            }
+        }
+
+        public ObservableCollection<Physician?> Physicians
+        {
+            get
+            {
+                return new ObservableCollection<Physician?>(PhysicianServiceProxy.Current.Physicians);
+            }
+        }
+        public Patient? SelectedPatient { get; set; }
+        public Physician? SelectedPhysician { get; set; }
+
         public void Refresh()
         {
             NotifyPropertyChanged(nameof(Appointments));

@@ -8,8 +8,13 @@ public class AppointmentServiceProxy
 {
     private List<Appointment?> appointmentList;
 
+    private PatientServiceProxy _patientSvc;
+    private PhysicianServiceProxy _physicianSvc;
+
     private AppointmentServiceProxy()
     {
+        _patientSvc = PatientServiceProxy.Current;
+        _physicianSvc = PhysicianServiceProxy.Current;
         appointmentList = new List<Appointment?>();
     }
 

@@ -1,5 +1,5 @@
 using System.Security.AccessControl;
-using Library.MediPortal;
+using Library.MediPortal.Models;
 using Library.MediPortal.Services;
 
 namespace Maui.MediPortal.Views;

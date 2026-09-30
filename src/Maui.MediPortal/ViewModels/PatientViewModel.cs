@@ -2,7 +2,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
-using Library.MediPortal;
+using Library.MediPortal.Models;
 using Library.MediPortal.Services;
 
 namespace Maui.MediPortal.ViewModels;
