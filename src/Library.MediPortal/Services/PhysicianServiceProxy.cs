@@ -10,6 +10,29 @@ public class PhysicianServiceProxy
     private PhysicianServiceProxy()
     {
         physicianList = new List<Physician?>();
+
+        // Sample records for testing appointment selection.
+        Create(new Physician
+        {
+            Name = "Jordan Lee",
+            LicenseNumber = "TEST-001",
+            GraduationDate = new DateTime(2010, 5, 15),
+            Specializations = "Family Medicine"
+        });
+        Create(new Physician
+        {
+            Name = "Casey Patel",
+            LicenseNumber = "TEST-002",
+            GraduationDate = new DateTime(2014, 5, 17),
+            Specializations = "Cardiology"
+        });
+        Create(new Physician
+        {
+            Name = "Riley Chen",
+            LicenseNumber = "TEST-003",
+            GraduationDate = new DateTime(2018, 5, 19),
+            Specializations = "Pediatrics"
+        });
     }
 
     private static PhysicianServiceProxy? instance;

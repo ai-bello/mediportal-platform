@@ -39,6 +39,13 @@ namespace Maui.MediPortal.ViewModels
         public Patient? SelectedPatient { get; set; }
         public Physician? SelectedPhysician { get; set; }
 
+        public DateTime? MinimumSelectedDate => DateTime.Today;
+        public DateTime? SelectedDate { get; set; }
+
+        public ObservableCollection<TimeSpan> AvailableTimes => new ObservableCollection<TimeSpan>(Enumerable.Range(9, 8).Select(hour => TimeSpan.FromHours(hour)));
+
+        public TimeSpan? SelectedTime { get; set; }
+
         public void Refresh()
         {
             NotifyPropertyChanged(nameof(Appointments));

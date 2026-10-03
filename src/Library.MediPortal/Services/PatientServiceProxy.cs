@@ -11,6 +11,29 @@ public class PatientServiceProxy
     private PatientServiceProxy()
     {
         patientList = new List<Patient?>();
+
+        // Sample records for testing appointment selection.
+        Create(new Patient
+        {
+            Name = "Alex Morgan",
+            Address = "101 Sample Lane",
+            BirthDate = new DateTime(1990, 4, 12),
+            Gender = "Male"
+        });
+        Create(new Patient
+        {
+            Name = "Jamie Rivera",
+            Address = "202 Example Street",
+            BirthDate = new DateTime(1985, 9, 23),
+            Gender = "Female"
+        });
+        Create(new Patient
+        {
+            Name = "Taylor Brooks",
+            Address = "303 Demo Avenue",
+            BirthDate = new DateTime(2000, 1, 8),
+            Gender = "Nonbinary"
+        });
     }
     private static PatientServiceProxy? instance;
     private static object instanceLock = new object();
