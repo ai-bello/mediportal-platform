@@ -3,10 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Maui.MediPortal.Views.AppointmentsView"
              Title="AppointmentsView"
+             NavigatedTo="AppointmentsView_NavigatedTo"
              >
     <VerticalStackLayout
         Padding="30,0"
         Spacing="25">
+        <ListView 
+            ItemsSource="{Binding Appointments}"
+            SelectedItem="{Binding SelectedAppointment}"
+            />
+        <Button Text="Add Appointment" Clicked="AddAppointmentClicked"/>
         <Button Text="Cancel" Clicked="CancelClicked"/>
     </VerticalStackLayout>
 </ContentPage>

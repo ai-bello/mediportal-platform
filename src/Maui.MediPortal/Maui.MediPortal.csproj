@@ -66,4 +66,10 @@
 	  <ProjectReference Include="../Library.MediPortal/Library.MediPortal.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="Views\AddAppointmentsView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>

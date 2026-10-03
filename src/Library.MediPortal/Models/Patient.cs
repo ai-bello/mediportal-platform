@@ -1,6 +1,6 @@
 ﻿using Library.MediPortal.Services;
 
-namespace Library.MediPortal;
+namespace Library.MediPortal.Models;
 
 public class Patient
 {
