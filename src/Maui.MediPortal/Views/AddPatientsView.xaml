@@ -16,8 +16,6 @@
             Date="{Binding BirthDate}"
             MinimumDate="1900-01-01"
             MaximumDate="2025-12-31"/>
-        <Label Text="Race"/>
-        <Entry Text="{Binding Race}"/>
         <Label Text="Gender"/>
         <Entry Text="{Binding Gender}"/>
         <Button Text="Save" Clicked="SaveClicked" />

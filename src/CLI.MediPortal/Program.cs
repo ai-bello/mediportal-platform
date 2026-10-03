@@ -219,8 +219,6 @@ class Program
             }
             Console.WriteLine("Invalid entry. Try again.");
         }
-        Console.WriteLine("Enter the patient's race: ");
-        patient.Race = Console.ReadLine();
         Console.WriteLine("Enter the patient's gender: ");
         patient.Gender = Console.ReadLine();
         while (true)
@@ -302,27 +300,20 @@ class Program
                         Console.WriteLine("Invalid entry. Try again.");
                         break;
                     case "4":
-                        Console.WriteLine("Enter the patient's race: ");
-                        if (patientToUpdate != null)
-                        {
-                            patientToUpdate.Race = Console.ReadLine();
-                        }  
-                        break;
-                    case "5":
                         Console.WriteLine("Enter the patient's gender: ");
                         if (patientToUpdate != null)
                         {
                             patientToUpdate.Gender = Console.ReadLine();
                         }
                         break;
-                    case "6":
+                    case "5":
                         string? newDiagnoses = Console.ReadLine();
                         if (newDiagnoses != null && patientToUpdate!=null)
                         {
                             patientToUpdate.Diagnoses.Add(newDiagnoses);
                         }
                         break;
-                    case "7":
+                    case "6":
                         goBack = true;
                         break;
                     default:
@@ -341,10 +332,9 @@ class Program
         Console.WriteLine("1. Name");
         Console.WriteLine("2. Address");
         Console.WriteLine("3. Birthdate");
-        Console.WriteLine("4. Race");
-        Console.WriteLine("5. Gender");
-        Console.WriteLine("6. Add Diagnoses"); 
-        Console.WriteLine("7. Done"); 
+        Console.WriteLine("4. Gender");
+        Console.WriteLine("5. Add Diagnoses"); 
+        Console.WriteLine("6. Done"); 
     }
 
     public static void DeletePatient(List<Patient?> patientList)

@@ -7,7 +7,6 @@ public class Patient
     public string? Name { get; set; }
     public string? Address { get; set; }
     public DateTime? BirthDate { get; set; }
-    public string? Race { get; set; }
     public string? Gender { get; set; }
     public int Id { get; set; }
 
@@ -28,7 +27,6 @@ public class Patient
             Name = patientCopy.Name;
             Address = patientCopy.Address;
             BirthDate = patientCopy.BirthDate;
-            Race = patientCopy.Race;
             Gender = patientCopy.Gender;
             Diagnoses = patientCopy.Diagnoses;
         }
@@ -45,7 +43,7 @@ public class Patient
     public override string ToString()
     {
         string data1 = $"[{Id}]. {Name} | {Address} | {BirthDate:MM-dd-yyyy}";
-        string data2 = $" | {Race} | {Gender}\nDiagnoses:\n";
+        string data2 = $" | {Gender}\nDiagnoses:\n";
         string diagnosesList = "";
         foreach (string? d in Diagnoses)
         {
