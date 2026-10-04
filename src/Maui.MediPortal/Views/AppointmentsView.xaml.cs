@@ -28,6 +28,10 @@ public partial class AppointmentsView : ContentPage
             Shell.Current.GoToAsync($"//AddAppointmentsView?appointmentId={selectedId}");
         }
     }
+   private void DeleteClicked(object sender, EventArgs e)
+    {
+        (BindingContext as AppointmentViewModel)?.Delete();
+    }
 
     private void AppointmentsView_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
