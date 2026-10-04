@@ -13,6 +13,7 @@
             SelectedItem="{Binding SelectedAppointment}"
             />
         <Button Text="Add Appointment" Clicked="AddAppointmentClicked"/>
+        <Button Text="Edit Appointment" Clicked="EditClicked" />
         <Button Text="Cancel" Clicked="CancelClicked"/>
     </VerticalStackLayout>
 </ContentPage>

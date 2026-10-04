@@ -16,13 +16,13 @@ public partial class PhysiciansView : ContentPage
 
 	private void EditClicked(object sender, EventArgs e)
 	{
-		var selectedId = (BindingContext as PhysicianViewModel)?.SelectedPhysician?.Id ?? 0;
-		if (selectedId != 0)
-		{
-			Shell.Current.GoToAsync($"//AddPhysiciansView?physicianId={selectedId}");
-		}
-		
-	}
+        var selectedId = (BindingContext as PhysicianViewModel)?.SelectedPhysician?.Id ?? 0;
+        if (selectedId != 0)
+        {
+            Shell.Current.GoToAsync($"//AddPhysiciansView?physicianId={selectedId}");
+        }
+
+    }
 	private void CancelClicked(object sender, EventArgs e)
 	{
 		Shell.Current.GoToAsync("//MainPage");

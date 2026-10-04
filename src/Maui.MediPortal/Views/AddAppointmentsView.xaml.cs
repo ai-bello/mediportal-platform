@@ -2,9 +2,9 @@ using Maui.MediPortal.ViewModels;
 using Library.MediPortal.Services;
 using Library.MediPortal.Models;
 
-
 namespace Maui.MediPortal.Views;
 
+[QueryProperty(nameof(AppointmentId), "appointmentId")]
 public partial class AddAppointmentsView : ContentPage
 {
 	public AddAppointmentsView()
@@ -27,6 +27,7 @@ public partial class AddAppointmentsView : ContentPage
         }
 		var appointment = new Appointment
 		{
+			Id =AppointmentId,
 			Patient = viewModel.SelectedPatient,
 			Physician = viewModel.SelectedPhysician,
 			PatientId = viewModel.SelectedPatient.Id,
@@ -45,7 +46,14 @@ public partial class AddAppointmentsView : ContentPage
 	}
     private void AddAppointmentsView_NavigatedTo(object sender, NavigatedToEventArgs e)
     {
-		BindingContext = new AppointmentViewModel();
+		if(AppointmentId==0)
+		{
+            BindingContext = new AppointmentViewModel();
+        } else
+		{
+			BindingContext = new AppointmentViewModel(AppointmentId);
+		}
+		
 
     }
 }
