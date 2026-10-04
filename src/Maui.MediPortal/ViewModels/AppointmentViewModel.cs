@@ -13,6 +13,23 @@ namespace Maui.MediPortal.ViewModels
 {
     public class AppointmentViewModel : INotifyPropertyChanged
     {
+        public AppointmentViewModel()
+        {
+
+        }
+
+        public AppointmentViewModel(int id)
+        {
+            var appointmentCopy = AppointmentServiceProxy.Current.Appointments.FirstOrDefault(a => (a?.Id ?? 0) == id);
+
+            if(appointmentCopy!=null)
+            {
+                SelectedPatient = Patients.FirstOrDefault(p => (p?.Id ?? 0) == appointmentCopy.PatientId);
+                SelectedPhysician = Physicians.FirstOrDefault(p => (p?.Id ?? 0) == appointmentCopy.PhysicianId);
+                SelectedDate = appointmentCopy.DateTime?.Date;
+                SelectedTime = appointmentCopy.DateTime?.TimeOfDay;
+            }
+        }
         public ObservableCollection<Appointment?> Appointments
         {
            get
@@ -49,6 +66,11 @@ namespace Maui.MediPortal.ViewModels
         public void Refresh()
         {
             NotifyPropertyChanged(nameof(Appointments));
+        }
+
+        public Appointment? SelectedAppointment
+        {
+            get; set;
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
