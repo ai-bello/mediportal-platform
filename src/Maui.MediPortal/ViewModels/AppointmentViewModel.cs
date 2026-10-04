@@ -80,5 +80,15 @@ namespace Maui.MediPortal.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        public void Delete()
+        {
+            if (SelectedAppointment == null)
+            {
+                return;
+            }
+            AppointmentServiceProxy.Current.Delete(SelectedAppointment.Id);
+            NotifyPropertyChanged(nameof(Appointments));
+        }
     }
 }

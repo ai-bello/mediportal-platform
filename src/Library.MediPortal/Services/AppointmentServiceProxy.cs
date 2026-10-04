@@ -74,5 +74,12 @@ public class AppointmentServiceProxy
 
         return appointment;
     }
-    
+
+    public Appointment? Delete(int id)
+    {
+        Appointment? appointmentToDelete = appointmentList.Where(p => p != null).FirstOrDefault(p => p?.Id == id);
+        appointmentList.Remove(appointmentToDelete);
+        return appointmentToDelete;
+    }
+
 }
