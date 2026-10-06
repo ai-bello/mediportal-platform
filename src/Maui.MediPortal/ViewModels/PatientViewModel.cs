@@ -2,18 +2,19 @@ using System;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using System.ComponentModel;
-using Library.MediPortal.Models;
 using Library.MediPortal.Services;
+
 
 namespace Maui.MediPortal.ViewModels;
 
 public class PatientViewModel : INotifyPropertyChanged
 {
-    public ObservableCollection<Patient?> Patients
+
+    public ObservableCollection<PatientRowViewModel?> Patients
     {
         get
         {
-            return new ObservableCollection<Patient?>(PatientServiceProxy.Current.Patients);
+            return new ObservableCollection<PatientRowViewModel?>(PatientServiceProxy.Current.Patients.Select(p => new PatientRowViewModel(p)));
         }
     }
 
@@ -22,10 +23,7 @@ public class PatientViewModel : INotifyPropertyChanged
         NotifyPropertyChanged(nameof(Patients));
     }
 
-    public Patient? SelectedPatient
-    {
-        get; set;
-    }
+    public PatientRowViewModel? SelectedPatient { get; set; }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -40,7 +38,7 @@ public class PatientViewModel : INotifyPropertyChanged
         {
             return;
         }
-        PatientServiceProxy.Current.Delete(SelectedPatient.Id);
+        PatientServiceProxy.Current.Delete(SelectedPatient?.Model?.Id ?? 0);
         NotifyPropertyChanged(nameof(Patients));
     }
 }

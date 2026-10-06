@@ -18,7 +18,7 @@ public partial class PatientsView : ContentPage
 
 	private void EditPatientClicked(object sender, EventArgs e)
 	{
-		var selectedId = (BindingContext as PatientViewModel)?.SelectedPatient?.Id ?? 0;
+		var selectedId = (BindingContext as PatientViewModel)?.SelectedPatient?.Model?.Id ?? 0;
 		if (selectedId != 0)
 		{
 			Shell.Current.GoToAsync($"//AddPatientsView?patientId={selectedId}");
@@ -38,5 +38,10 @@ public partial class PatientsView : ContentPage
 	private void DeletePatientClicked(object sender, EventArgs e)
 	{
 		(BindingContext as PatientViewModel)?.Delete();
+	}
+
+	private void InlineDeleteClicked(object sender, EventArgs e)
+	{
+		(BindingContext as PatientViewModel)?.Refresh();
 	}
 }
