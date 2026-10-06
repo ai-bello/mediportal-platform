@@ -4,16 +4,58 @@ using System.Runtime.CompilerServices;
 using System.ComponentModel;
 using Library.MediPortal.Models;
 using Library.MediPortal.Services;
+using System.Windows.Input;
 
 namespace Maui.MediPortal.ViewModels;
 
 public class PatientViewModel : INotifyPropertyChanged
 {
-    public ObservableCollection<Patient?> Patients
+    public Patient? Model { get; set; }
+    public ICommand? DeleteCommand { get; set; }
+    public ICommand? EditCommand { get; set; }
+
+    public PatientViewModel()
+    {
+        Model = new Patient();
+        SetUpCommands();
+    }
+
+    public PatientViewModel(Patient? model)
+    {
+        Model = model;
+        SetUpCommands();
+    }
+    
+    private void SetUpCommands()
+    {
+        DeleteCommand = new Command(DoDelete);
+        EditCommand = new Command((p) => DoEdit(p as PatientViewModel));
+    }
+
+    private void DoDelete()
+    {
+        if(Model.Id>0)
+        {
+            PatientServiceProxy.Current.Delete(Model.Id);
+            Shell.Current.GoToAsync("//PatientsView");
+        }
+    }
+
+    private void DoEdit(PatientViewModel? pvm)
+    {
+        if (pvm == null)
+        {
+            return;
+        }
+        var selectedPatientId = pvm?.Model?.Id ?? 0;
+        Shell.Current.GoToAsync($"//AddPatientsView?patientId={selectedPatientId}");
+    }
+
+    public ObservableCollection<PatientViewModel?> Patients
     {
         get
         {
-            return new ObservableCollection<Patient?>(PatientServiceProxy.Current.Patients);
+            return new ObservableCollection<PatientViewModel?>(PatientServiceProxy.Current.Patients.Select(p=>new PatientViewModel(p)));
         }
     }
 
@@ -22,10 +64,7 @@ public class PatientViewModel : INotifyPropertyChanged
         NotifyPropertyChanged(nameof(Patients));
     }
 
-    public Patient? SelectedPatient
-    {
-        get; set;
-    }
+    public PatientViewModel? SelectedPatient{ get; set; }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -40,7 +79,7 @@ public class PatientViewModel : INotifyPropertyChanged
         {
             return;
         }
-        PatientServiceProxy.Current.Delete(SelectedPatient.Id);
+        PatientServiceProxy.Current.Delete(SelectedPatient?.Model?.Id ?? 0);
         NotifyPropertyChanged(nameof(Patients));
     }
 }
