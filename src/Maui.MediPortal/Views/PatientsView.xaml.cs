@@ -39,4 +39,9 @@ public partial class PatientsView : ContentPage
 	{
 		(BindingContext as PatientViewModel)?.Delete();
 	}
+
+	private void InlineDeleteClicked(object sender, EventArgs e)
+	{
+		(BindingContext as PatientViewModel)?.Refresh();
+	}
 }
