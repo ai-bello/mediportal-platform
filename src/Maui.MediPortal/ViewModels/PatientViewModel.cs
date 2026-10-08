@@ -14,7 +14,11 @@ public class PatientViewModel : INotifyPropertyChanged
     {
         get
         {
-            return new ObservableCollection<PatientRowViewModel?>(PatientServiceProxy.Current.Patients.Select(p => new PatientRowViewModel(p)));
+            return new ObservableCollection<PatientRowViewModel?>(PatientServiceProxy
+                .Current
+                .Patients
+                .Where(p=>p?.Name?.ToUpper()?.Contains(Query?.ToUpper() ?? String.Empty) ?? false)
+                .Select(p => new PatientRowViewModel(p)));
         }
     }
 
@@ -24,6 +28,8 @@ public class PatientViewModel : INotifyPropertyChanged
     }
 
     public PatientRowViewModel? SelectedPatient { get; set; }
+
+    public string? Query { get; set; }
 
     public event PropertyChangedEventHandler? PropertyChanged;
 
