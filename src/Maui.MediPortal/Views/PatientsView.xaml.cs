@@ -44,4 +44,9 @@ public partial class PatientsView : ContentPage
 	{
 		(BindingContext as PatientViewModel)?.Refresh();
 	}
+
+    private void SearchClicked(object sender, EventArgs e)
+    {
+        (BindingContext as PatientViewModel)?.Refresh();
+    }
 }
