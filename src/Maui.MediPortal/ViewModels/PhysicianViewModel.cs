@@ -9,11 +9,11 @@ namespace Maui.MediPortal.ViewModels;
 
 public class PhysicianViewModel : INotifyPropertyChanged
 {
-    public ObservableCollection<Physician?> Physicians
+    public ObservableCollection<PhysicianRowViewModel?> Physicians
     {
         get
         {
-            return new ObservableCollection<Physician?>(PhysicianServiceProxy.Current.Physicians);
+            return new ObservableCollection<PhysicianRowViewModel?>(PhysicianServiceProxy.Current.Physicians.Select(p=>new PhysicianRowViewModel(p)));
         }
     }
 
@@ -22,7 +22,7 @@ public class PhysicianViewModel : INotifyPropertyChanged
         NotifyPropertyChanged(nameof(Physicians));
     }
 
-    public Physician? SelectedPhysician
+    public PhysicianRowViewModel? SelectedPhysician
     {
         get; set;
     }
@@ -40,7 +40,7 @@ public class PhysicianViewModel : INotifyPropertyChanged
         {
             return;
         }
-        PhysicianServiceProxy.Current.Delete(SelectedPhysician.Id);
+        PhysicianServiceProxy.Current.Delete(SelectedPhysician?.Model?.Id ?? 0);
         NotifyPropertyChanged(nameof(Physicians));
     }
 }
